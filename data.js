@@ -29,4 +29,13 @@ const EMPLOYEE = {
     icon192:     "icon-192.png",
     icon512:     "icon-512.png"
   }
+  },
+ // --- Фотоархив проектов ---
+  // Просто добавьте пути к файлам из папки photo/
+  projects: [
+    { src: "photo/project-1.jpg", title: "Морская доставка негабаритного груза в Шанхай" },
+    { src: "photo/project-2.jpg", title: "Авиаперевозка оборудования на Сахалин" },
+    { src: "photo/project-3.jpg", title: "ЖД-контейнеры в Европу" },
+    { src: "photo/project-4.jpg", title: "Автодоставка негабаритного груза" }
+  ]
 };
