@@ -4,16 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Favicon -->
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="apple-touch-icon" href="logo.png">
 
-<meta property="og:title" content="Гуров Степан Викторович — Балтийская Логистическая Компания">
-<meta property="og:description" content="Международная логистика без границ. Море, авиа, ЖД, авто — доставка грузов любой сложности.">
-<meta property="og:image" content="logo.png">
+<!-- Open Graph (заголовок и описание подставятся из data.js) -->
 <meta property="og:type" content="website">
+<meta property="og:image" content="logo.png">
 <meta name="twitter:card" content="summary_large_image">
 
-<title>Визитка — Балтийская Логистическая Компания</title>
+<!-- Заголовок (перезапишется скриптом) -->
+<title>Визитка</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
@@ -40,7 +42,6 @@
       #050a14;
   }
 
-  /* Неоновое сияние (aurora) */
   .aurora {
     position:absolute;
     border-radius:50%;
@@ -56,7 +57,6 @@
     50%     { transform:translate(60px,-40px) scale(1.15); }
   }
 
-  /* Canvas для карты маршрутов */
   #logistics-canvas {
     position:absolute; inset:0;
     width:100%; height:100%;
@@ -64,7 +64,6 @@
     opacity:.9;
   }
 
-  /* Лёгкая сетка поверх — глубина */
   .grid-overlay {
     position:absolute; inset:0;
     background-image:
@@ -106,7 +105,6 @@
     opacity:.6; pointer-events:none;
   }
 
-  /* Логотип */
   .logo {
     width:112px; height:112px; margin:0 auto 22px;
     border-radius:50%;
@@ -258,7 +256,7 @@
 </head>
 <body>
 
-<!-- Премиальный фон -->
+<!-- Фон -->
 <div class="bg-layer" aria-hidden="true">
   <div class="aurora a1"></div>
   <div class="aurora a2"></div>
@@ -312,9 +310,10 @@
   <div class="footer" id="footer">—</div>
 </div>
 
-<!-- Скрипт фона (карта маршрутов) -->
+<!-- Фоновая анимация -->
 <script src="logistics-bg.js"></script>
 
+<!-- Данные сотрудника -->
 <script src="data.js"></script>
 <script>
 function fillCard() {
@@ -341,11 +340,25 @@ function fillCard() {
   document.getElementById('footer').textContent =
     'Балтийская Логистическая Компания · ' + EMPLOYEE.city;
 
-  document.title = EMPLOYEE.name + ' — ' + EMPLOYEE.company;
-  document.querySelector('meta[property="og:title"]').content =
-    EMPLOYEE.name + ' — ' + EMPLOYEE.company;
-  document.querySelector('meta[property="og:description"]').content =
-    EMPLOYEE.slogan;
+  // Динамические мета-теги Open Graph
+  const ogTitle = EMPLOYEE.name + ' — ' + EMPLOYEE.company;
+  const ogDesc = EMPLOYEE.slogan;
+
+  document.title = ogTitle;
+
+  // Создаём теги, если их нет (их убрали из head)
+  function ensureMeta(property, content) {
+    let tag = document.querySelector(`meta[property="${property}"]`);
+    if (!tag) {
+      tag = document.createElement('meta');
+      tag.setAttribute('property', property);
+      document.head.appendChild(tag);
+    }
+    tag.setAttribute('content', content);
+  }
+
+  ensureMeta('og:title', ogTitle);
+  ensureMeta('og:description', ogDesc);
 }
 
 function downloadVCF() {
