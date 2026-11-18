@@ -32,9 +32,14 @@ const EMPLOYEE = {
  // --- Фотоархив проектов ---
   // Просто добавьте пути к файлам из папки photo/
   projects: [
-    { src: "photo/project-1.jpg", title: "Морская доставка негабаритного груза в Шанхай" },
-    { src: "photo/project-2.jpg", title: "Авиаперевозка оборудования на Сахалин" },
-    { src: "photo/project-3.jpg", title: "ЖД-контейнеры в Европу" },
-    { src: "photo/project-4.jpg", title: "Автодоставка негабаритного груза" }
+    { src: "photo/JAC.png", title: "Негабаритный погрузчик" },
+    { src: "photo/shan.png", title: "Погрузчики" },
+    { src: "photo/Доставка автовозами.png", title: "Доставка ком. транспорта" },
+    { src: "photo/Выгрузка машин.png", title: "Выгрузка из контейнеров" },
+    { src: "photo/Мусоровозы.png", title: "Доставка ком. транспорта" },
+    { src: "photo/Негабарит.png", title: "Негабариты" },
+    { src: "photo/Погрузчики.png", title: "Погрузчики" },
+    { src: "photo/спецютехника.png", title: "Доставка спец. техники" },
+    { src: "photo/Яхта.png", title: "Яхта" }
   ]
 };
